@@ -1,0 +1,9 @@
+services:
+  backend:
+    build: ./be-app/
+    ports:
+      - "3100:3100"
+  frontend:
+    build: ./fe-app/
+    ports:
+      - "3101:3101"
