@@ -6,4 +6,4 @@ services:
   frontend:
     build: ./fe-app/
     ports:
-      - "3101:3101"
+      - "80:80"

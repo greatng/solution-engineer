@@ -2,12 +2,12 @@
 
 FROM golang:1.18-alpine as build
 
-WORKDIR /cmd/backend
+WORKDIR /app
 
-COPY ./cmd/backend/ .
+COPY . .
 
 #CGO_ENABLED=0 => Need static lib as a result
-RUN CGO_ENABLED=0 go build -o backend .
+RUN CGO_ENABLED=0 go build -o webchecker ./cmd/webchecker
 
 # Deploy stage
 
@@ -15,10 +15,10 @@ FROM gcr.io/distroless/base-debian10
 
 WORKDIR /
 
-COPY --from=build ./cmd/backend/backend .
+COPY --from=build ./app .
 
 EXPOSE 3100
 
 USER nonroot:nonroot
 
-CMD ["./backend"]
+CMD ["./webchecker"]

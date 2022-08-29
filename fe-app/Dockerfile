@@ -26,5 +26,5 @@ COPY --from=builder /app/package.json ./
 
 ENV NEXT_PUBLIC_BACKEND_URL=http://localhost:3100/webcheck
 
-EXPOSE 3101
-CMD ["yarn", "start", "--port", "3101"]
+EXPOSE 80
+CMD ["yarn", "start", "--port", "80"]
